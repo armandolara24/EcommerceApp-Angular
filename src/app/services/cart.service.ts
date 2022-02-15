@@ -64,7 +64,8 @@ export class CartService {
     // log cart data for debugging purposes
     //this.logCartData(totalPriceValue, totalQuantityValue);
   }
-
+  
+/* // used for debugging only
   logCartData(totalPriceValue: number, totalQuantityValue: number) {
     for(let cartItem of this.cartItems){
       const subTotalPrice = cartItem.quantity * cartItem.unitPrice;
@@ -73,7 +74,7 @@ export class CartService {
     console.log(`totalPrice: ${totalPriceValue.toFixed(2)}, totalQuantity:${totalQuantityValue}`)
     console.log('------')
   }
-
+*/
   decrementQuantity(cartItem: CartItem) {
     cartItem.quantity--;
     if (cartItem.quantity == 0){
