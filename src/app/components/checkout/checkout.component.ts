@@ -18,6 +18,8 @@ import { ShopValidators } from 'src/app/validators/shop-validators';
 })
 export class CheckoutComponent implements OnInit {
 
+  storage : Storage = sessionStorage;
+
   checkoutFormGroup: FormGroup;
 
   totalPrice: number = 0.00;
@@ -41,6 +43,9 @@ export class CheckoutComponent implements OnInit {
 
     this.reviewCartDetails();
 
+    // read user's email address from browser storage
+    const email = JSON.parse(this.storage.getItem('userEmail')!);
+
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
         firstName: new FormControl('',
@@ -51,7 +56,7 @@ export class CheckoutComponent implements OnInit {
           Validators.required,
           Validators.minLength(2),
           ShopValidators.notOnlyWhitespace]),
-        email: new FormControl('',
+        email: new FormControl(email,
           [Validators.required,
           Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]
         )
