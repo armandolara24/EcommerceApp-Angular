@@ -4,7 +4,11 @@
 
 export const environment = {
   production: false,
-  luv2shopApiUrl: "https://localhost:8443/api"
+
+  luv2shopApiUrl: "http://localhost:8080/api",
+  //luv2shopApiUrl: "https://localhost:8443/api",
+
+  luv2shopApiUrlLoginCallback: "http://localhost:4200/login/callback"
 };
 
 /*
